@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fortify FPR Results</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 13px;
+      color: #333;
+      background: #fff;
+      padding: 16px;
+    }
+
+    /* Loading */
+    .loading { text-align: center; padding: 60px 0; }
+    .spinner {
+      width: 32px; height: 32px; margin: 0 auto 12px;
+      border: 3px solid #e0e0e0; border-top-color: #0078d4;
+      border-radius: 50%; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Empty / Error */
+    .empty-state, .error-state { text-align: center; padding: 60px 20px; }
+    .empty-state h2, .error-state h2 { margin-bottom: 8px; font-size: 18px; }
+    .error-state h2 { color: #d32f2f; }
+
+    /* Tab bar */
+    .tab-bar {
+      display: flex; gap: 2px; border-bottom: 2px solid #e0e0e0;
+      margin-bottom: 16px; overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 8px 16px; border: none; background: #f5f5f5;
+      cursor: pointer; font-size: 13px; white-space: nowrap;
+      border-radius: 4px 4px 0 0; transition: background 0.2s;
+    }
+    .tab-btn:hover { background: #e3f2fd; }
+    .tab-btn.active {
+      background: #0078d4; color: #fff; font-weight: 600;
+    }
+
+    /* Tab content */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Summary card */
+    .summary-card {
+      background: #f9f9f9; border: 1px solid #e0e0e0;
+      border-radius: 6px; padding: 16px; margin-bottom: 16px;
+    }
+    .summary-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .summary-header h3 { font-size: 15px; color: #333; }
+    .scan-meta { font-size: 12px; color: #666; }
+    .summary-counts { display: flex; gap: 12px; flex-wrap: wrap; }
+    .count {
+      text-align: center; padding: 8px 16px;
+      border-radius: 4px; min-width: 70px;
+    }
+    .count-value { display: block; font-size: 22px; font-weight: 700; }
+    .count-label { display: block; font-size: 11px; text-transform: uppercase; opacity: 0.8; }
+    .count.critical { background: #ffebee; color: #d32f2f; }
+    .count.high { background: #fff3e0; color: #f57c00; }
+    .count.medium { background: #fffde7; color: #f9a825; }
+    .count.low { background: #e8f5e9; color: #388e3c; }
+    .count.info { background: #e3f2fd; color: #1976d2; }
+    .count.total { background: #f5f5f5; color: #333; }
+
+    /* Vulnerability table */
+    .vuln-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .vuln-table th {
+      background: #f5f5f5; padding: 8px 10px; text-align: left;
+      border-bottom: 2px solid #e0e0e0; font-weight: 600; white-space: nowrap;
+    }
+    .vuln-table td {
+      padding: 7px 10px; border-bottom: 1px solid #eee; vertical-align: top;
+    }
+    .vuln-table tr:hover td { background: #f9f9f9; }
+    .url-cell { max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cwe-cell  { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; color: #555; }
+    .summary-cell { max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #444; }
+    .severity-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 3px;
+      color: #fff; font-size: 11px; font-weight: 600;
+    }
+    .no-issues { padding: 40px; text-align: center; color: #388e3c; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="tab.js"></script>
+</body>
+</html>

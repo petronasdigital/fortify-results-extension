@@ -1,0 +1,52 @@
+{
+  "manifestVersion": 1,
+  "id": "fortify-fpr-viewer",
+  "publisher": "PetronasDigital",
+  "version": "1.0.9",
+  "name": "Fortify FPR Results Viewer",
+  "description": "View Fortify DAST/SAST FPR scan results directly in Azure DevOps build summary. Supports multiple FPR files with tabbed view.",
+  "categories": ["Azure Pipelines"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "img/icon128.png",
+    "large": "img/icon512.png"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "files": [
+    {
+      "path": "dist/tab",
+      "addressable": true
+    },
+    {
+      "path": "img",
+      "addressable": true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "fortify-fpr-tab",
+      "type": "ms.vss-build-web.build-results-tab",
+      "description": "Fortify FPR scan results tab in build summary",
+      "targets": [
+        "ms.vss-build-web.build-results-view"
+      ],
+      "properties": {
+        "name": "Fortify Results",
+        "uri": "dist/tab/tab.html",
+        "supportsMobile": false,
+        "order": 99
+      }
+    }
+  ],
+  "scopes": [
+    "vso.build"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "fortify-fpr-viewer",
+  "version": "1.0.0",
+  "description": "Azure DevOps extension to view Fortify FPR scan results in build summary",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "package": "npm run build && tfx extension create --manifest-globs vss-extension.json --output-path dist",
+    "publish": "npm run build && tfx extension publish --manifest-globs vss-extension.json"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "tfx-cli": "^0.17.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "azure-devops-extension-api": "^4.234.0",
+    "azure-devops-extension-sdk": "^4.0.2",
+    "jszip": "^3.10.1"
+  }
+}

@@ -2,10 +2,11 @@
   "manifestVersion": 1,
   "id": "fortify-fpr-viewer",
   "publisher": "PetronasDigital",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "name": "Fortify FPR Results Viewer",
   "description": "View Fortify DAST/SAST FPR scan results directly in Azure DevOps build summary. Supports multiple FPR files with tabbed view.",
   "categories": ["Azure Pipelines"],
+  "public": true,
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
@@ -19,6 +20,10 @@
     "details": {
       "path": "README.md"
     }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/petronasdigital/fortify-results-extension"
   },
   "files": [
     {
